@@ -69,7 +69,12 @@ if (passwordCriteria.lowercase) {
 if (passwordCriteria.uppercase) {
   characters = characters.concat(passwordCharacters.alphaUpper)
 }
-//if (passwordCriteria.specialCharacters)
+if (passwordCriteria.specialCharacters) {
+  characters = characters.concat(passwordCharacters.specialChars)
+}
+if(passwordCriteria.numbers) {
+  characters = characters.concat(passwordCharacters.numbers)
+}
 var password = ""
 
 
@@ -85,6 +90,8 @@ console.log(password)
 
 //generate password
 //show password
+// var button = 
+// button.addEventListener ('click', writePassword)
 
 // Write password to the #password input
 function writePassword() {
@@ -98,3 +105,7 @@ function writePassword() {
 //special functions like event listeners 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+
+
+var newPassword = alert("Here is your new password: " + password)
