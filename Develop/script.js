@@ -33,27 +33,56 @@
 var generateBtn = document.querySelector("#generate");
 
 var passwordCriteria = {
-  length: 8,
+  length: 12,
   lowercase: true,
   uppercase: true,
   numeric: true,
   specialCharacters: true
 }
 
-var alphabet = "abcdefghijklmnopqrstuvwxyz"
-var alphaLower = alphabet.split ('');
-var alphaUpper = (alphabet.toUpperCase().split(''))
-var numeric = "1234567890"
-var numbers = numeric.split ('')
-var specialCharacters = "!@#$%^&*()"
-var specialChars = specialCharacters.split ('')
+var alphabet = "abcdefghijklmnopqrstuvwxyz";
+var numeric = "1234567890";
+var specialCharacters = "!@#$%^&*()";
+
+var passwordCharacters = {
+  alphaLower: alphabet.split(''),
+  alphaUpper: (alphabet.toUpperCase().split('')),
+  numbers: numeric.split(''),
+  specialChars: specialCharacters.split(''),
+}
+
+console.log(passwordCharacters)
+
 
 //functions
 
-//prompt for length, 
-//validate length, 
+//prompt for length
+var passwordLength = confirm("Would you like your password to be minimum of 8 characters long?")
 // prompt for characters
-//validate characters
+var characterPrompt = confirm("Does your password need to contain an uppercase, lowercase, number and special character?")
+//validate length, characters
+
+var characters = []
+if (passwordCriteria.lowercase) {
+  characters = characters.concat(passwordCharacters.alphaLower)
+}
+if (passwordCriteria.uppercase) {
+  characters = characters.concat(passwordCharacters.alphaUpper)
+}
+//if (passwordCriteria.specialCharacters)
+var password = ""
+
+
+for (let i = 0; i < passwordCriteria.length; i++) {
+
+  var random = characters[Math.floor(Math.random() * characters.length)]
+  console.log(random)
+  password = random + password
+}
+
+console.log(password)
+
+
 //generate password
 //show password
 
